@@ -32,6 +32,7 @@ func (l *Log) KV(k string, v interface{}) *Log {
 
 func (l *Log) Err(err error) *Log { return l.KV("err", err) }
 func (l *Log) Error(msg string)   { l.log("error", msg) }
+func (l *Log) Debug(msg string)   { l.log("debug", msg) }
 func (l *Log) Info(msg string)    { l.log("info", msg) }
 func (l *Log) Fatal(msg string)   { l.log("fatal", msg); os.Exit(1) }
 
@@ -49,6 +50,7 @@ func (l *Log) log(lvl, msg string) {
 
 func Err(err error) *Log              { return logger.Err(err) }
 func Error(msg string)                { logger.log("error", msg) }
+func Debug(msg string)                { logger.log("debug", msg) }
 func Info(msg string)                 { logger.log("info", msg) }
 func Fatal(msg string)                { logger.log("fatal", msg); os.Exit(1) }
 func KV(k string, v interface{}) *Log { return logger.KV(k, v) }
